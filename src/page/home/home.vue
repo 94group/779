@@ -1,39 +1,35 @@
 <template>
-  <div>home
-    <input type="text" v-model="username">
-    <input type="test" v-model="password">
-    <button value="login" @click="login">登录</button>
+  <div>
+    <head-top signin='home'>
+      <span slot='logo' signin='home' class="head_logo" @click="reload"></span>
+    </head-top>
+    <div>图片list</div>
   </div>
 </template>
 <script>
 import {setCookie} from '@/config/util.js'
+import HeadTop from '@/page/head/HeadTop'
 export default {
   data () {
     return {
-      password: '',
-      username: ''
     }
   },
-  created () {
-    setCookie('PHPSESSID', 1)
+  components: {
+    HeadTop
   },
-  computed: {
-    oid () {
-      return this.$store.state.oid
-    }
-  },
+  computed: {},
   methods: {
-    async login () {
-      let data = {
-        oid: this.oid,
-        domain: 'www.668cp00.com',
-        username: this.username,
-        password: this.password
-      }
-      this.$axios.post('/user/signin', data).then((res) => {
-        console.log(res)
-      })
+    reload () {
+      window.location.reload()
     }
   }
 }
 </script>
+<style lang="scss">
+@import '../../style/mixin.scss';
+.head_logo{
+  @include ct;
+  @include wh(6rem, 100%);
+  @include backimg('/static/img/94club.png')
+}
+</style>

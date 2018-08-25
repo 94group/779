@@ -7,6 +7,10 @@ import store from './store/'
 import {baseUrl} from './config/env'
 import axios from 'axios'
 import FastClick from 'fastclick'
+import 'muse-ui/lib/styles/base.less'
+import {Button} from 'muse-ui'
+import 'muse-ui/lib/styles/theme.less'
+Vue.use(Button)
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {
     FastClick.attach(document.body)
